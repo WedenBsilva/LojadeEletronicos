@@ -1,0 +1,16 @@
+# "prod" suffix properties file. Scopes name samples: "prod", "web-prod", "api-prod", etc.
+# Overrides application.yml default properties
+spring:
+  datasource:
+    url: jdbc:mysql://${spring.datasource.host}/mktnine?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false&generateSimpleParameterMetadata=true&useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    host: ${DB_MYSQL_DESAENV08_MKTNINE_MKTNINE_ENDPOINT}
+    username: mktnine_WPROD
+    password: ${DB_MYSQL_DESAENV08_MKTNINE_MKTNINE_WPROD}
+    hikari:
+      connection-test-query: SELECT 1
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    defer-datasource-initialization: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none

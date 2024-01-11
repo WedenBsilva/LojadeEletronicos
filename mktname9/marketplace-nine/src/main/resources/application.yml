@@ -1,0 +1,44 @@
+# Default properties file
+spring:
+  application:
+    name: marketplace-nine
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: validate
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  profiles:
+    active: ${SCOPE_SUFFIX} # Comma-separated list of active profiles. Can be overridden by a command line switch.
+  mvc:
+    throw-exception-if-no-handler-found: true # Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
+  web:
+    resources:
+      add-mappings: false
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${spring.datasource.host}/mktnine?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false&generateSimpleParameterMetadata=true&useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    host: ${DB_HOST}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      connection-test-query: SELECT 1
+
+server:
+  compression:
+    enabled: true # Whether response compression is enabled.
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json # Comma-separated list of MIME types that should be compressed.
+    min-response-size: 1024 # Minimum "Content-Length" value that is required for compression to be performed.
+
+springdoc:
+  packages-to-scan: com.mercadolibre.marketplace_nine.controller
+  show-actuator: true
+  swagger-ui:
+    operations-sorter: alpha
+    disable-swagger-default-url: true
+
+app:
+  title: marketplace-nine
+  description: 'Marketplace Nine'
+  version: '0.0.1'

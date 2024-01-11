@@ -1,0 +1,13 @@
+# Properties file for integration tests
+# Overrides application.yml default properties
+spring:
+  datasource:
+    url: jdbc:h2:mem:test_db;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: 'none'
